@@ -1,4 +1,4 @@
-enum class Element(val score: Int) {
+private enum class Element(val score: Int) {
     Rock(1), Paper(2), Scissors(3);
 
     fun roundScore(other: Element): Int {
@@ -8,7 +8,7 @@ enum class Element(val score: Int) {
     }
 }
 
-enum class Result(val shift: Int) {
+private enum class Result(val shift: Int) {
     Win(1), Draw(0), Lose(-1);
 
     fun findAnswer(element: Element): Element {
@@ -16,21 +16,21 @@ enum class Result(val shift: Int) {
     }
 }
 
-val elementNames = hashMapOf(
+private val elementNames = hashMapOf(
     "A" to Element.Rock, "B" to Element.Paper, "C" to Element.Scissors,
     "X" to Element.Rock, "Y" to Element.Paper, "Z" to Element.Scissors,
 )
 
-val resultNames = hashMapOf("X" to Result.Lose, "Y" to Result.Draw, "Z" to Result.Win)
+private val resultNames = hashMapOf("X" to Result.Lose, "Y" to Result.Draw, "Z" to Result.Win)
 
-fun part1(input: List<String>): Int {
+private fun part1(input: List<String>): Int {
     return input.sumOf { round ->
         val (a, b) = round.split(" ").map { elementNames[it]!! }
         b.score + b.roundScore(a)
     }
 }
 
-fun part2(input: List<String>): Int {
+private fun part2(input: List<String>): Int {
     return input.sumOf { round ->
         val (a, b) = round.split(" ")
         val other = elementNames[a]!!
