@@ -1,4 +1,4 @@
-fun List<String>.toSignals(): Sequence<Int> {
+private fun List<String>.toSignals(): Sequence<Int> {
     var value = 1
     return sequence {
         for (line in this@toSignals) {
